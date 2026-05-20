@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 20% 98%;
+    --foreground: 150 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 10%;
+
+    --primary: 152 45% 28%;
+    --primary-foreground: 60 20% 98%;
+
+    --secondary: 48 90% 55%;
+    --secondary-foreground: 150 30% 10%;
+
+    --muted: 120 10% 93%;
+    --muted-foreground: 150 10% 45%;
+
+    --accent: 48 90% 55%;
+    --accent-foreground: 150 30% 10%;
+
+    --destructive: 4 72% 50%;
+    --destructive-foreground: 60 20% 98%;
+
+    --border: 120 10% 88%;
+    --input: 120 10% 88%;
+    --ring: 152 45% 28%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom tokens */
+    --warning: 4 72% 50%;
+    --warning-foreground: 60 20% 98%;
+    --success: 152 45% 38%;
+    --gold: 48 90% 55%;
+    --hero-overlay: linear-gradient(135deg, hsla(152, 45%, 12%, 0.92) 0%, hsla(150, 30%, 8%, 0.85) 100%);
+    --shadow-card: 0 1px 3px hsla(150, 30%, 10%, 0.04), 0 4px 12px hsla(150, 30%, 10%, 0.06);
+    --shadow-elevated: 0 8px 30px -6px hsla(150, 30%, 10%, 0.12), 0 2px 8px -2px hsla(150, 30%, 10%, 0.06);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  .dark {
+    --background: 150 20% 6%;
+    --foreground: 60 20% 95%;
+    --card: 150 20% 9%;
+    --card-foreground: 60 20% 95%;
+    --popover: 150 20% 9%;
+    --popover-foreground: 60 20% 95%;
+    --primary: 152 45% 45%;
+    --primary-foreground: 150 30% 5%;
+    --secondary: 48 80% 50%;
+    --secondary-foreground: 150 30% 5%;
+    --muted: 150 15% 15%;
+    --muted-foreground: 150 10% 60%;
+    --accent: 48 80% 50%;
+    --accent-foreground: 150 30% 5%;
+    --destructive: 4 72% 50%;
+    --destructive-foreground: 60 20% 98%;
+    --border: 150 15% 18%;
+    --input: 150 15% 18%;
+    --ring: 152 45% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(152, 45%, 28%), hsl(48, 90%, 55%));
+  }
+
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-dark {
+    @apply bg-foreground/90 backdrop-blur-xl;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area for bottom nav */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* App-like touch feel */
+@media (hover: none) {
+  button, a, [role="button"] {
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Pull-to-refresh prevention for app feel */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
